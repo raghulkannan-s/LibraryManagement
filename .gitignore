@@ -1,3 +1,6 @@
 .vscode
 bin
 .github
+.classpath
+.project
+.settings

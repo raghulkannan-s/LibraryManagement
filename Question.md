@@ -1,8 +1,13 @@
-Problem: Library Management System\
+
+## Question : 
+
+### Problem: Library Management System
 
 Design and implement a Library Management System as a console application in Java.
 
 The system should allow librarians to manage books and members, and handle the borrowing and returning of books
+
+
 
 
 # Requirement:
@@ -23,9 +28,3 @@ The system should allow librarians to manage books and members, and handle the b
 
 2. Books
    1. UD Books
-
-
-## model:
-
-1. Member
-   1. 

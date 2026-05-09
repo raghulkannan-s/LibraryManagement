@@ -1,23 +1,27 @@
 package utils;
 
+import dto.LoginRequest;
+import dto.RegisterRequest;
+
 public class validateAuth {
 
-    public static boolean login(String username, String password){
+    public static boolean login(LoginRequest loginRequest){
 
-        if( !lengthCheck(username, 6, 12) 
-            || !lengthCheck(password, 6, 12)) {
+        if( !lengthCheck(loginRequest.getUsername() , 6, 12) 
+            || !lengthCheck(loginRequest.getPassword() , 6, 12)) {
                 return false;
             }
 
         return true;
     }
-    public static boolean register(String username, String password, String rePassword){
 
-        if( !password.equals(rePassword) ) return false;
+    public static boolean register(RegisterRequest registerRequest){
 
-        if( !lengthCheck(username, 6, 12 ) 
-            || !lengthCheck(password, 6, 12 )
-            || !lengthCheck(rePassword, 6, 12 )) {
+        if( !registerRequest.getPassword().equals(registerRequest.getRePassword()) ) return false;
+
+        if( !lengthCheck(registerRequest.getUsername(), 6, 12 ) 
+            || !lengthCheck(registerRequest.getPassword(), 6, 12 )
+            || !lengthCheck(registerRequest.getRePassword(), 6, 12 )) {
                 return false;
             }
 
