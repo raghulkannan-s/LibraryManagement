@@ -26,6 +26,7 @@ public class BookView {
 
     public void addBook() {
         System.out.println("    Add a Book :");
+        sc.nextLine();
         System.out.print("Enter Book Name : ");
         String name = sc.nextLine();
         System.out.print("Enter Author Name : ");
@@ -92,8 +93,6 @@ public class BookView {
             return null;
         }
 
-        bookService.increaseQuantity(id, 1);
-        System.out.println("Book Returned Successfully!");
         return book;    
     }
 

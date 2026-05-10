@@ -114,8 +114,11 @@ public class Main {
                     case 3:
                         Book returnedBook = bookView.returnBook();
                         if (returnedBook != null) {
-                            System.out.println("You have returned: " + returnedBook.getName());
-                            memberService.removeBookFromMember(currentMember, returnedBook);
+                            boolean removed = memberService.removeBookFromMember(currentMember, returnedBook);
+                            if( removed ){
+                                System.out.println("You have returned: " + returnedBook.getName());
+                                bookService.increaseQuantity(returnedBook.getId(), 1);
+                            }
                         }
                         break;
                     case 4:

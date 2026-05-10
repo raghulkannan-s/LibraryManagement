@@ -29,7 +29,7 @@ public class validateAuth {
     }
 
     private static boolean lengthCheck(String data, int start, int end){
-        if( data.length() < start && data.length() > end ) {
+        if( data.length() < start || data.length() > end ) {
             System.err.println("Your data "+ data +" should be "+ start + "-" + end + " characters");
             return false;
         }

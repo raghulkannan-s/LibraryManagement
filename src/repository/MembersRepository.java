@@ -9,12 +9,20 @@ import model.Member;
 
 public class MembersRepository {
     
+    private static MembersRepository instance;
     private Map<String, Member> members;
 
     public MembersRepository() {
         this.members = new HashMap<>(); 
 
         addAdmin();
+    }
+
+    public static MembersRepository getInstance(){
+        if( instance == null ) {
+            instance = new MembersRepository();
+        }
+        return instance;
     }
 
     private void addAdmin(){
@@ -52,7 +60,7 @@ public class MembersRepository {
         Member newMember = new Member(registerRequest.getUsername(), registerRequest.getPassword());
 
         members.put( registerRequest.getUsername(), newMember );
-        System.out.println(newMember.getUsername() + "is added Successfully!");
+        System.out.println(newMember.getUsername() + " registered and Logged-in Successfully!");
         return newMember;
     }
 
@@ -60,8 +68,15 @@ public class MembersRepository {
         members.get(member.getUsername()).borrowBook(book);
     }
 
-    public void removeBookFromMember(Member member, Book book) {
-        members.get(member.getUsername()).returnBook(book);
+    public boolean removeBookFromMember(Member member, Book book) {
+        Member stored = members.get(member.getUsername());
+        if( stored == null ) return false;
+        if( !stored.hasBorrowed(book) ) {
+            System.err.println("You have not borrowed this book!");
+            return false;
+        }
+        stored.returnBook(book);
+        return true;
     }
 
     

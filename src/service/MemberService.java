@@ -9,7 +9,7 @@ public class MemberService {
     private MembersRepository membersRepository;
 
     public MemberService() {
-        membersRepository = new MembersRepository();
+        membersRepository = MembersRepository.getInstance();
     }
 
     public Iterable<Member> listMembers(){
@@ -20,8 +20,8 @@ public class MemberService {
         membersRepository.addBookToMember(member, book);
     }
 
-    public void removeBookFromMember(Member member, Book book) {
-        membersRepository.removeBookFromMember(member, book);
+    public boolean removeBookFromMember(Member member, Book book) {
+        return membersRepository.removeBookFromMember(member, book);
     }
 
 }

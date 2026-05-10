@@ -7,7 +7,11 @@ import repository.MembersRepository;
 
 public class AuthService {
 
-    MembersRepository members = new MembersRepository();
+    MembersRepository members = MembersRepository.getInstance();
+
+    public AuthService() {
+        
+    }
 
     public Member login( LoginRequest loginRequest ){
         

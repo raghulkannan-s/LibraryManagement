@@ -24,11 +24,15 @@ public class BookService {
     }
 
     public void increaseQuantity(int id,int quantity){
-        booksRepository.getBookById(id).setQuantity(booksRepository.getBookById(id).getQuantity() + quantity);
+        Book book = booksRepository.getBookById(id);
+        if( book == null ) return;
+        book.setQuantity(book.getQuantity() + quantity);
     }
 
     public void decreaseQuantity(int id,int quantity){
-        booksRepository.getBookById(id).setQuantity(booksRepository.getBookById(id).getQuantity() - quantity);
+        Book book = booksRepository.getBookById(id);
+        if( book == null ) return;
+        book.setQuantity(book.getQuantity() - quantity);
     }
 
 }

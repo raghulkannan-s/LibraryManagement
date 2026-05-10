@@ -36,6 +36,10 @@ public class Member {
         return borrowedBooks;
     }
 
+    public boolean hasBorrowed(Book book) {
+        return borrowedBooks.contains(book);
+    }
+
     public void borrowBook(Book book) {
         borrowedBooks.add(book);
     }
